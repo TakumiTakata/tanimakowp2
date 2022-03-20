@@ -17,9 +17,15 @@ get_header();
   while (have_posts()) :
     the_post();
   ?>
-  
     <h1>商品詳細</h1>
-
+    <?php $terms =  get_the_terms(get_the_ID(), 'genre'); ?>
+    <?php if ($terms) : ?><!-- ジャンルを選んだ商品がある時のみ -->
+      <ul>
+        <?php foreach ($terms as $term) : ?>
+          <li><a href="<?php get_term_link($term); ?>"><?php echo esc_html($term->name); ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
   <?php
     get_template_part('template-parts/content', get_post_type());
 

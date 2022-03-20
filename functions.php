@@ -8,23 +8,6 @@
  * @package takuchan__s
  */
 
-add_action('init', function () {
-	register_post_type('item', [
-		'label' => '商品',
-		'public' => true,//表示するかどうか
-		'menu_position' => 5,//表示位置
-		'menu_icon' => 'dashicons-store',//アイコン
-		'supports' => ['thumbnail', 'title', 'editor', 'page-attributes'],//thumbnail(アイキャッチ)を使えるようにする
-		'has_archive' => true, //一覧表示（設定からパーマリンク更新が必要）
-		// 'hierarchical' => true //階層構造を持たせる(supportsにattributesが必要)、チェックボックスで選ぶことができるようになる
-		'show_in_rest' => true, //ブロックエディタ（REST API）有効化
-	]);
-	register_taxonomy('genre', 'item', [
-		'label' => '商品ジャンル',
-		'hierarchical' => true,
-		'show_in_rest' => true,
-	]);
-});
 
 
 if (!defined('_S_VERSION')) {
